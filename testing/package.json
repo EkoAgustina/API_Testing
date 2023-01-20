@@ -1,0 +1,27 @@
+{
+  "name": "api_testing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf ./mochawesome-report",
+    "test": "npm run clean && mocha ./test/user_test --reporter spec --reporter mochawesome",
+    "test-fakerest": "npm run clean && mocha ./test-fakerest-api --reporter spec --reporter mochawesome",
+    "test-conf": "mocha --config=.mocharc.json"
+  },
+  "keywords": [
+    "supertest",
+    "mocha",
+    "chai",
+    "mochawesome"
+  ],
+  "author": "Eko Agustina",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3",
+    "rimraf": "^4.0.0",
+    "supertest": "^6.3.3"
+  }
+}

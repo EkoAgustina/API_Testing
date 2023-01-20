@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-01-20T17:57:15.264Z",
+    "end": "2023-01-20T17:57:15.536Z",
+    "duration": 272,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "89537265-4e3b-404f-ae50-2da1047686a8",
+      "title": "",
+      "fullFile": "D:\\VSCode\\API\\testing\\test\\user_test\\create_user.js",
+      "file": "\\test\\user_test\\create_user.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "24063995-90e7-4a15-a5ba-e90c622d5619",
+          "title": "USER",
+          "fullFile": "D:\\VSCode\\API\\testing\\test\\user_test\\create_user.js",
+          "file": "\\test\\user_test\\create_user.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully created user",
+              "fullTitle": "USER Successfully created user",
+              "timedOut": false,
+              "duration": 250,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "return new Promise((resolve,reject) => {\n    request(env.baseUrl)\n    .post('/register')\n    .set(header)\n    .send(userData)\n    .expect(function (res) {\n        if (res.statusCode != 200){\n            reject(new Error('Response Code not Expected, responseCode: '+res.body.responseCode))\n        }\n        else{\n            console.log('Successfully, responseCode: '+res.body.responseCode)\n        }\n    })\n    .end((err,ress)=>{\n        if(err){\n            reject(new Error('There an error: '+res.error))\n        }\n        else{\n            resolve(ress)\n        }\n    })\n})",
+              "err": {},
+              "uuid": "c3035b2b-e2da-4aa0-8485-1d87c4dc58c5",
+              "parentUUID": "24063995-90e7-4a15-a5ba-e90c622d5619",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "c3035b2b-e2da-4aa0-8485-1d87c4dc58c5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 250,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
