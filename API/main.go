@@ -21,9 +21,9 @@ func main() {
 	r.HandleFunc("/login", authcontroller.Login).Methods("POST")
 	r.HandleFunc("/register", authcontroller.Register).Methods("POST")
 	r.HandleFunc("/logout", authcontroller.Logout).Methods("GET")
-	r.HandleFunc("/addProduct", productcontroller.AddProduct).Methods("POST")
 
 	api := r.PathPrefix("/api").Subrouter()
+	api.HandleFunc("/addProduct", productcontroller.AddProduct).Methods("POST")
 	api.HandleFunc("/products", productcontroller.GetProduct).Methods("GET")
 	api.Use(middlewares.JWTMiddleware)
 

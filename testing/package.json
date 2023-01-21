@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf ./mochawesome-report",
-    "test": "npm run clean && mocha ./test/user_test --reporter spec --reporter mochawesome",
-    "test-fakerest": "npm run clean && mocha ./test-fakerest-api --reporter spec --reporter mochawesome",
-    "test-conf": "mocha --config=.mocharc.json"
+    "test": "npm run clean && mocha ./test/product_test --reporter spec --reporter mochawesome",
+    "user": "npm run clean && mocha ./test/user_test --reporter spec --reporter mochawesome"
   },
   "keywords": [
     "supertest",
