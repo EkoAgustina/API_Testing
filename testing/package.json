@@ -7,7 +7,7 @@
     "clean": "rimraf ./mochawesome-report",
     "test": "npm run clean && mocha ./test/product_test --reporter spec --reporter mochawesome",
     "user": "npm run clean && mocha ./test/user_test --reporter spec --reporter mochawesome",
-    "test-jenkins": "JUNIT_REPORT_PATH=/report.xml mocha --colors --reporter mocha-jenkins-reporter"
+    "test-jenkins": "./report.xml mocha --colors --reporter mocha-jenkins-reporter"
   },
   "keywords": [
     "supertest",
