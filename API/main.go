@@ -27,5 +27,5 @@ func main() {
 	api.HandleFunc("/products", productcontroller.GetProduct).Methods("GET")
 	api.Use(middlewares.JWTMiddleware)
 
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe(":8081", r))
 }
