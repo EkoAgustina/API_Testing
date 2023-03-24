@@ -1,0 +1,177 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-01-21T08:43:02.380Z",
+    "end": "2023-01-21T08:43:02.939Z",
+    "duration": 559,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "14867c62-9fe1-4ccd-85fa-37460922f38b",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "da944327-0088-4842-a5a1-a648c7ed5d2b",
+          "title": "USER",
+          "fullFile": "D:\\VSCode\\API_Testing\\testing\\test\\product_test\\product.js",
+          "file": "\\test\\product_test\\product.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully created user",
+              "fullTitle": "USER Successfully created user",
+              "timedOut": false,
+              "duration": 258,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "return new Promise((resolve,reject) => {\n    agent\n    .post('/register')\n    .set(header)\n    .send(userData)\n    .expect(function (res) {\n        if (res.statusCode == 200){\n            console.log('Create user, responseCode:'+res.body.responseCode)\n        }\n        else{\n            reject(new Error('Create user response code not expected, responseCode:'+res.body.responseCode))\n        }\n    })\n    .end((err,ress)=>{\n        if(err){\n            reject(new Error('There an error: '+res.error))\n        }\n        else{\n            resolve(ress)\n        }\n    })\n})",
+              "err": {},
+              "uuid": "9039fdc8-b7c1-4827-9b23-335e1b56d68d",
+              "parentUUID": "da944327-0088-4842-a5a1-a648c7ed5d2b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Login successfully",
+              "fullTitle": "USER Login successfully",
+              "timedOut": false,
+              "duration": 197,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "return new Promise((resolve,reject) => {\n    const reqBody = {\n        'username': userData.username,\n        'password': '123'\n    }\n    agent\n    .post('/login')\n    .set(header)\n    .send(reqBody)\n    .expect(function (res) {\n        if (res.statusCode == 200){\n            console.log('Login, responseCode:'+res.body.responseCode)\n        }\n        else{\n            reject(new Error('Login response Code not expected, responseCode:'+res.body.responseCode))\n        }\n    })\n    .end((err,ress)=>{\n        if(err){\n            reject(new Error('There an error: '+res.error))\n        }\n        else{\n            resolve(ress)\n        }\n    })\n})",
+              "err": {},
+              "uuid": "47153d32-d656-4160-8113-355d8d14b9e5",
+              "parentUUID": "da944327-0088-4842-a5a1-a648c7ed5d2b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9039fdc8-b7c1-4827-9b23-335e1b56d68d",
+            "47153d32-d656-4160-8113-355d8d14b9e5"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 455,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "e9331a39-21ff-41e9-a62b-7f9fbe74013a",
+          "title": "PRODUCT",
+          "fullFile": "D:\\VSCode\\API_Testing\\testing\\test\\product_test\\product.js",
+          "file": "\\test\\product_test\\product.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully added product",
+              "fullTitle": "PRODUCT Successfully added product",
+              "timedOut": false,
+              "duration": 56,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "return new Promise((resolve,reject) => {\n    setup.agent\n    .post('/api/addProduct')\n    .set(header)\n    .send(productData)\n    .expect(function (res) {\n        if (res.statusCode == 200){\n            console.log('Adding products, responseCode:'+res.body.responseCode)\n        }\n        else{\n            reject(new Error('Adding products response code not expected, responseCode:'+res.body.responseCode))\n        }\n    })\n    .end((err,ress)=>{\n        if(err){\n            reject(new Error('There an error: '+res.error))\n        }\n        else{\n            resolve(ress)\n        }\n    })\n})",
+              "err": {},
+              "uuid": "2f494212-d75b-4fec-92e1-7f70f4df849f",
+              "parentUUID": "e9331a39-21ff-41e9-a62b-7f9fbe74013a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Successfully get product data",
+              "fullTitle": "PRODUCT Successfully get product data",
+              "timedOut": false,
+              "duration": 13,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "return new Promise((resolve,reject) => {\n    setup.agent\n    .get('/api/products')\n    .set(header)\n    .expect(function (res) {\n        if (res.statusCode == 200){\n            console.log('Get product, responseCode:'+res.body.responseCode)\n        }\n        else{\n            reject(new Error('get product response code not expected, responseCode:'+res.body.responseCode))\n        }\n    })\n    .end((err,ress)=>{\n        if(err){\n            reject(new Error('There an error: '+res.error))\n        }\n        else{\n            resolve(ress)\n        }\n    })\n})",
+              "err": {},
+              "uuid": "1fe46778-61b2-44ef-801d-defe0926ef04",
+              "parentUUID": "e9331a39-21ff-41e9-a62b-7f9fbe74013a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2f494212-d75b-4fec-92e1-7f70f4df849f",
+            "1fe46778-61b2-44ef-801d-defe0926ef04"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 69,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

@@ -19,11 +19,16 @@ func JWTMiddleware(next http.Handler) http.Handler {
 				return
 			}
 		}
-		// mengambil token value
+		/*
+			Retrieve token value
+		*/
 		tokenString := c.Value
 
 		claims := &config.JWTClaim{}
-		// parsing token jwt
+
+		/*
+			parsing token jwt
+		*/
 		token, err := jwt.ParseWithClaims(tokenString, claims, func(t *jwt.Token) (interface{}, error) {
 			return config.JWT_KEY, nil
 		})

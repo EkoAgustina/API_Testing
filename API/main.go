@@ -1,8 +1,8 @@
 package main
 
 import (
-	"log"
 	"net/http"
+	"fmt"
 
 	"github.com/jeypc/go-jwt-mux/middlewares"
 
@@ -16,6 +16,7 @@ import (
 func main() {
 
 	models.ConnectDatabase()
+
 	r := mux.NewRouter()
 
 	r.HandleFunc("/login", authcontroller.Login).Methods("POST")
@@ -27,5 +28,12 @@ func main() {
 	api.HandleFunc("/products", productcontroller.GetProduct).Methods("GET")
 	api.Use(middlewares.JWTMiddleware)
 
-	log.Fatal(http.ListenAndServe(":8081", r))
+	
+	fmt.Print(http.ListenAndServe(":8081", r))
+
+
+
+
+
+
 }

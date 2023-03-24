@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"time"
+	"log"
 
 	"github.com/golang-jwt/jwt/v4"
 
@@ -31,13 +32,17 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		get user data by username
 	*/
 	var user models.User
-	if err := models.DB.Where("username = ?", userInput.Username).First(&user).Error; err != nil {
+
+	err := models.DB.Where("username = ?", userInput.Username).First(&user).Error;
+	if err != nil {
 		switch err {
 		case gorm.ErrRecordNotFound:
 			response := map[string]string{
 				"responseCode":    "401",
 				"responseMessage": "Incorrect username or password"}
 			helper.ResponseJSON(w, http.StatusUnauthorized, response)
+			objBody, _ := json.Marshal(response)
+		    log.Println("Body: ", string(objBody))
 			return
 		default:
 			response := map[string]string{
@@ -47,12 +52,18 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+
 	/*
 		check if the password is valid
 	*/
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(userInput.Password)); err != nil {
-		response := map[string]string{"responseCode": "401", "responseMessage": "Incorrect username or password"}
+		var response = map[string]string{
+			"responseCode": "401",
+			"responseMessage": "Incorrect username or password"}
 		helper.ResponseJSON(w, http.StatusUnauthorized, response)
+		objBody, _ := json.Marshal(response)
+		log.Println("Body: ", string(objBody))
+		log.Println(err)
 		return
 	}
 
@@ -92,7 +103,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	response := map[string]string{
 		"responseCode":    "200",
-		"responseMessage": "Login successful",
+		"responseMessage": "Login successfully",
 		"token":           token}
 	helper.ResponseJSON(w, http.StatusOK, response)
 }
@@ -153,3 +164,4 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 		"responseMessage": "logout successful"}
 	helper.ResponseJSON(w, http.StatusOK, response)
 }
+

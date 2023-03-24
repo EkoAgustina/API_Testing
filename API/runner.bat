@@ -1,2 +1,2 @@
 @ECHO OFF
-start /b go run main.go
+call go run main.go
